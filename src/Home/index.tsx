@@ -21,19 +21,18 @@ export function Home() {
 
   async function handleTakePicture() {
     const photo = await cameraRef.current.takePictureAsync();
-    console.log(photo.uri);
+    setPhotoURI(photo.uri);
   }
 
   async function shareScreenShot() {
-    const screenShot = await captureRef(screenShotRef);
-    await Sharing.shareAsync("file://" + screenShot);
+    const screenshot = await captureRef(screenShotRef);
+    await Sharing.shareAsync("file://" + screenshot);
   }
 
   useEffect(() => {
     Camera.requestCameraPermissionsAsync()
-      .then(response => setHasCameraPermission(response.granted))
+      .then(response => setHasCameraPermission(response.granted));
   }, []);
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,18 +41,17 @@ export function Home() {
           <Header position={positionSelected} />
 
           <View style={styles.picture}>
-
             {
-              hasCameraPermission && !photo
-              ? <Camera 
-                ref={cameraRef}
-                style={styles.camera}
-                type={CameraType.front}
+              hasCameraPermission && !photo 
+                ? <Camera
+                  ref={cameraRef}
+                  style={styles.camera}
+                  type={CameraType.front}
                 /> 
-              : <Image 
-                source={{ uri: photo ? photo : 'https://p.kindpng.com/picc/s/50-507696_no-camera-allowed-clip-art-at-pngio-transparent.png' }} 
-                style={styles.camera}
-                onLoad={shareScreenShot}
+                : <Image
+                  source={{ uri: photo ? photo : 'https://images.gutefrage.net/media/fragen/bilder/meine-kamera-auf-windows-10-funktioniert-nicht-was-tun/0_big.jpg?v=1584606917000' }}
+                  style={styles.camera}
+                  onLoad={shareScreenShot}
                 />
             }
 
