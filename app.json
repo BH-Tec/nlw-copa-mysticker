@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mycupstickerapp",
+    "name": "My Sticker | Bruno H",
     "slug": "mycupstickerapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,9 +18,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "br.com.brunodorea",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "br.com.brunodorea",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
